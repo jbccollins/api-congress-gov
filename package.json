@@ -1,0 +1,15 @@
+{
+  "name": "api-congress-gov",
+  "version": "0.0.0",
+  "description": "TypeScript wrapper around api.congress.gov",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "generate": "swagger-typescript-api -p ./api.congress.gov.swagger.json -o ./ -n api.ts"
+  },
+  "dependencies": {
+    "swagger-typescript-api": "13.0.22"
+  },
+  "author": "",
+  "license": "ISC"
+}
