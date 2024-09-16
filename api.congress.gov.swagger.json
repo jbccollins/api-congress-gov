@@ -1,8 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
+    "title": "Congress.gov API",
     "description": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
-    "title": "Congress.gov API"
+    "version": "1.0.0"
   },
   "basePath": "/v3",
   "tags": [
@@ -1940,7 +1941,7 @@
         "tags": ["member"],
         "summary": "Returns the list of members specified by Congress",
         "description": "GET /member/congress/:congress\n\n**Example Request**\n\nhttps://api.congress.gov/v3/member/congress/118?api_key=[INSERT_KEY]\n\n**Example Response**\n\n    {\n        \"members\": [\n        {\n            \"bioguideId\": \"B001320\",\n            \"depiction\": {\n                \"attribution\": \"Image courtesy of the Senator's office\",\n                \"imageUrl\": \"https://www.congress.gov/img/member/b001320_200.jpg\"\n        },\n            \"name\": \"Butler, Laphonza R.\",\n            \"partyName\": \"Democratic\",\n            \"state\": \"California\",\n            \"terms\": {\n                \"item\": [\n                    {\n                        \"chamber\": \"Senate\",\n                        \"startYear\": 2023\n                    }\n                ]\n            },\n            \"updateDate\": \"2024-04-09T15:54:25Z\",\n            \"url\": \"http://api.congress.gov/v3/member/B001320?format=json\"\n        },\n        {\n             \"bioguideId\": \"A000376\",\n             \"depiction\": {\n                 \"attribution\": \"Image courtesy of the Member\",\n                 \"imageUrl\": \"https://www.congress.gov/img/member/a000376_200.jpg\"\n        },\n              \"district\": 32,\n              \"name\": \"Allred, Colin Z.\",\n              \"partyName\": \"Democratic\",\n              \"state\": \"Texas\",\n              \"terms\": {\n                  \"item\": [\n                      {\n                          \"chamber\": \"House of Representatives\",\n                          \"startYear\": 2019\n                      }\n                  ]\n              },\n             \"updateDate\": \"2024-04-09T13:26:21Z\",\n             \"url\": \"http://api.congress.gov/v3/member/A000376?format=json\"\n        },\n      ]\n    }\n",
-        "operationId": "congress_list",
+        "operationId": "member_list_by_congress",
         "produces": ["application/xml", "application/json"],
         "parameters": [
           {
