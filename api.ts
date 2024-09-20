@@ -55,7 +55,7 @@ export enum ContentType {
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = "/v3";
+  public baseUrl: string = "https://api.congress.gov/v3";
   private securityData: SecurityDataType | null = null;
   private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
   private abortControllers = new Map<CancelToken, AbortController>();
@@ -221,7 +221,8 @@ export class HttpClient<SecurityDataType = unknown> {
 
 /**
  * @title Congress.gov API
- * @baseUrl /v3
+ * @version 1.0.0
+ * @baseUrl https://api.congress.gov/v3
  *
  * Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href="sign-up/" target="_blank">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href="https://github.com/LibraryOfCongress/api.congress.gov/" target="_blank">GitHub repository</a>.
  */
@@ -633,11 +634,38 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       },
       params: RequestParams = {},
     ) =>
-      this.request<void, void>({
+      this.request<
+        {
+          actions?: {
+            actionCode?: string;
+            /** @format date */
+            actionDate?: string;
+            sourceSystem?: {
+              code?: number;
+              name?: string;
+            };
+            text?: string;
+            type?: string;
+          }[];
+          pagination?: {
+            count?: number;
+          };
+          request?: {
+            billNumber?: string;
+            billType?: string;
+            billUrl?: string;
+            congress?: string;
+            contentType?: string;
+            format?: string;
+          };
+        },
+        void
+      >({
         path: `/bill/${congress}/${billType}/${billNumber}/actions`,
         method: "GET",
         query: query,
         secure: true,
+        format: "json",
         ...params,
       }),
 
@@ -1298,12 +1326,12 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @description GET /member/congress/:congress **Example Request** https://api.congress.gov/v3/member/congress/118?api_key=[INSERT_KEY] **Example Response** { "members": [ { "bioguideId": "B001320", "depiction": { "attribution": "Image courtesy of the Senator's office", "imageUrl": "https://www.congress.gov/img/member/b001320_200.jpg" }, "name": "Butler, Laphonza R.", "partyName": "Democratic", "state": "California", "terms": { "item": [ { "chamber": "Senate", "startYear": 2023 } ] }, "updateDate": "2024-04-09T15:54:25Z", "url": "http://api.congress.gov/v3/member/B001320?format=json" }, { "bioguideId": "A000376", "depiction": { "attribution": "Image courtesy of the Member", "imageUrl": "https://www.congress.gov/img/member/a000376_200.jpg" }, "district": 32, "name": "Allred, Colin Z.", "partyName": "Democratic", "state": "Texas", "terms": { "item": [ { "chamber": "House of Representatives", "startYear": 2019 } ] }, "updateDate": "2024-04-09T13:26:21Z", "url": "http://api.congress.gov/v3/member/A000376?format=json" }, ] }
      *
      * @tags member
-     * @name CongressList
+     * @name MemberListByCongress
      * @summary Returns the list of members specified by Congress
      * @request GET:/member/congress/{congress}
      * @secure
      */
-    congressList: (
+    memberListByCongress: (
       congress: string,
       query?: {
         /** The data format. Value can be xml or json. */

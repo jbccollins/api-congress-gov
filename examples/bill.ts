@@ -47,6 +47,13 @@ async function main() {
     });
     const billsJson = await bills.json();
     console.log(billsJson);
+    const billActions = await api.bill.billActions(118, "sres", 813, {
+      format: "json",
+      offset: 0,
+      limit: 20,
+    })
+    const billActionsJson = await billActions.json();
+    console.log(billActionsJson);
   } catch (e) {
     console.error(e);
   }

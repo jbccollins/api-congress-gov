@@ -8,7 +8,8 @@
     "generate": "swagger-typescript-api -p ./api.congress.gov.swagger.json -o ./ -n api.ts"
   },
   "dependencies": {
-    "swagger-typescript-api": "13.0.22"
+    "swagger-typescript-api": "13.0.22",
+    "tsconfig-paths": "^4.2.0"
   },
   "author": "",
   "license": "ISC"

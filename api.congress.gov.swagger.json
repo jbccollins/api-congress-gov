@@ -5,7 +5,7 @@
     "description": "Congress.gov shares its application programming interface (API) with the public to ingest the Congressional data. <a href=\"sign-up/\" target=\"_blank\">Sign up for an API key</a> from api.data.gov that you can use to access web services provided by Congress.gov. To learn more, view our <a href=\"https://github.com/LibraryOfCongress/api.congress.gov/\" target=\"_blank\">GitHub repository</a>.\n",
     "version": "1.0.0"
   },
-  "basePath": "/v3",
+  "basePath": "https://api.congress.gov/v3",
   "tags": [
     { "name": "bill", "description": "Returns bill data from the API" },
     {
@@ -810,7 +810,50 @@
           }
         ],
         "responses": {
-          "200": { "description": "Successful operation" },
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "actions": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "actionCode": { "type": "string" },
+                      "actionDate": { "type": "string", "format": "date" },
+                      "sourceSystem": {
+                        "type": "object",
+                        "properties": {
+                          "code": { "type": "integer" },
+                          "name": { "type": "string" }
+                        }
+                      },
+                      "text": { "type": "string" },
+                      "type": { "type": "string" }
+                    }
+                  }
+                },
+                "pagination": {
+                  "type": "object",
+                  "properties": {
+                    "count": { "type": "integer" }
+                  }
+                },
+                "request": {
+                  "type": "object",
+                  "properties": {
+                    "billNumber": { "type": "string" },
+                    "billType": { "type": "string" },
+                    "billUrl": { "type": "string" },
+                    "congress": { "type": "string" },
+                    "contentType": { "type": "string" },
+                    "format": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
           "400": { "description": "Invalid status value" }
         },
         "security": [{ "api_key": [] }]

@@ -1,11 +1,15 @@
 {
     "compilerOptions": {
       "target": "es6",
-      "lib": ["dom", "es6"],
+      "lib": ["ESNext", "DOM"],
       "module": "commonjs",
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true
+      "forceConsistentCasingInFileNames": true,
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["src/*"]
+      }
     }
   }
