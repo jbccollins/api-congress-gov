@@ -1,15 +1,18 @@
 {
-    "compilerOptions": {
-      "target": "es6",
-      "lib": ["ESNext", "DOM"],
-      "module": "commonjs",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "baseUrl": ".",
-      "paths": {
-        "@/*": ["src/*"]
-      }
-    }
-  }
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["ESNext", "DOM"],
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "outDir": "./dist", // Add this line to specify the output directory
+    "rootDir": "./src" // Add this line to specify the root directory
+  },
+  "include": ["src/**/*"] // Add this line to include all files in the src directory
+}

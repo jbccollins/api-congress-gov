@@ -3,43 +3,46 @@ export enum UpdateDateSort {
   "updateDateDesc" = "updateDate+desc",
 }
 
-export interface Base_Paginated_ApiRequest {
+export interface Paginated_ApiRequest {
   offset?: number;
   limit?: number;
 }
 
-export interface UpdatedDateSortable_ApiRequest {
+export interface UpdateDateSortable_ApiRequest {
   sort?: UpdateDateSort;
 }
 
-export type UpdatedDateSortable_Paginated_ApiRequest =
-  Base_Paginated_ApiRequest & UpdatedDateSortable_ApiRequest;
+export type UpdateDateSortable_Paginated_ApiRequest = Paginated_ApiRequest &
+  UpdateDateSortable_ApiRequest;
 
-export interface TimeRangeApiRequest {
+export interface TimeRange_ApiRequest {
   fromDateTime?: string;
   toDateTime?: string;
 }
 
-export type TimeRange_UpdatedDateSortable_Paginated_ApiRequest =
-  UpdatedDateSortable_Paginated_ApiRequest & TimeRangeApiRequest;
+export type TimeRange_UpdateDateSortable_Paginated_ApiRequest =
+  UpdateDateSortable_Paginated_ApiRequest & TimeRange_ApiRequest;
 
-export interface ResponseRequest {
+export type TimeRange_Paginated_ApiRequest = Paginated_ApiRequest &
+  TimeRange_ApiRequest;
+
+export interface Base_ApiResponse_Request {
   contentType: "application/json";
   format: "json";
 }
 
 export interface Base_ApiResponse {
-  request: ResponseRequest;
+  request: Base_ApiResponse_Request;
 }
 
-export interface Pagination {
+export interface Paginated_ApiResponse_Pagination {
   count: number;
   next?: string;
   prev?: string;
 }
 
-export interface Base_Paginated_ApiResponse extends Base_ApiResponse {
-  pagination: Pagination;
+export interface Paginated_ApiResponse extends Base_ApiResponse {
+  pagination: Paginated_ApiResponse_Pagination;
 }
 
 export interface Action {
@@ -57,6 +60,16 @@ export enum ChamberCode {
   Senate = "S",
 }
 
+export enum ChamberLongName {
+  HouseOfRepresentatives = "House of Representatives",
+  Senate = "Senate",
+}
+
+export enum TrueFalse {
+  True = "true",
+  False = "false",
+}
+
 export enum BillType {
   HR = "HR",
   S = "S",
@@ -72,6 +85,13 @@ export enum Party {
   D = "D",
   R = "R",
   I = "I", // TODO: Confirm this exists
+}
+
+// TODO: Confirm all of these (and if more exist)
+export enum PartyName {
+  Democratic = "Democratic",
+  Republican = "Republican",
+  Independent = "Independent",
 }
 
 export enum YesNo {
@@ -130,6 +150,59 @@ export enum StateAbbreviation {
   WV = "WV",
   WI = "WI",
   WY = "WY",
+}
+
+export enum State {
+  Alabama = "Alabama",
+  Alaska = "Alaska",
+  Arizona = "Arizona",
+  Arkansas = "Arkansas",
+  California = "California",
+  Colorado = "Colorado",
+  Connecticut = "Connecticut",
+  Delaware = "Delaware",
+  Florida = "Florida",
+  Georgia = "Georgia",
+  Hawaii = "Hawaii",
+  Idaho = "Idaho",
+  Illinois = "Illinois",
+  Indiana = "Indiana",
+  Iowa = "Iowa",
+  Kansas = "Kansas",
+  Kentucky = "Kentucky",
+  Louisiana = "Louisiana",
+  Maine = "Maine",
+  Maryland = "Maryland",
+  Massachusetts = "Massachusetts",
+  Michigan = "Michigan",
+  Minnesota = "Minnesota",
+  Mississippi = "Mississippi",
+  Missouri = "Missouri",
+  Montana = "Montana",
+  Nebraska = "Nebraska",
+  Nevada = "Nevada",
+  NewHampshire = "New Hampshire",
+  NewJersey = "New Jersey",
+  NewMexico = "New Mexico",
+  NewYork = "New York",
+  NorthCarolina = "North Carolina",
+  NorthDakota = "North Dakota",
+  Ohio = "Ohio",
+  Oklahoma = "Oklahoma",
+  Oregon = "Oregon",
+  Pennsylvania = "Pennsylvania",
+  RhodeIsland = "Rhode Island",
+  SouthCarolina = "South Carolina",
+  SouthDakota = "South Dakota",
+  Tennessee = "Tennessee",
+  Texas = "Texas",
+  Utah = "Utah",
+  Vermont = "Vermont",
+  Virginia = "Virginia",
+  Washington = "Washington",
+  WestVirginia = "West Virginia",
+  Wisconsin = "Wisconsin",
+  Wyoming = "Wyoming",
 }
 
 export interface CountUrl {

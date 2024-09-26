@@ -37,7 +37,10 @@
       "name": "committee-meeting",
       "description": "Returns committee meeting data from the API"
     },
-    { "name": "hearing", "description": "Returns hearing data from the API" },
+    {
+      "name": "hearing",
+      "description": "Returns hearing data from the API"
+    },
     {
       "name": "congressional-record",
       "description": "Returns Congressional Record data from the API"
@@ -821,11 +824,16 @@
                     "type": "object",
                     "properties": {
                       "actionCode": { "type": "string" },
-                      "actionDate": { "type": "string", "format": "date" },
+                      "actionDate": {
+                        "type": "string",
+                        "format": "date"
+                      },
                       "sourceSystem": {
                         "type": "object",
                         "properties": {
-                          "code": { "type": "integer" },
+                          "code": {
+                            "type": "integer"
+                          },
                           "name": { "type": "string" }
                         }
                       },

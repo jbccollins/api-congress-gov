@@ -1,11 +1,9 @@
 import { AuthenticatedFetch } from "@/helpers/instantiate-authenticated-fetch";
-import billDetails from "./billDetails";
-import billListAll from "./billListAll";
+import memberList from "./memberList";
 
 const methods = (fetch: AuthenticatedFetch) => {
   return {
-    billListAll: billListAll(fetch),
-    billDetails: billDetails(fetch),
+    memberList: memberList(fetch),
   } as const;
 };
 
